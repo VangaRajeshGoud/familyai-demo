@@ -1,6 +1,8 @@
 # FamilyAI — GitHub Static Demo
 
-A responsive, GitHub Pages-ready product prototype for **FamilyAI — AI-Powered Family Grocery & Lifestyle Platform**.
+A responsive, GitHub Pages-ready product prototype for **FamilyAI — AI-Powered Family Grocery & Lifestyle Platform**, built by **Kridha Technologies** (Hyderabad, India).
+
+Partnerships and sponsorship: VangaRajesh1993@gmail.com
 
 ## Demo pages
 - `index.html` — product vision

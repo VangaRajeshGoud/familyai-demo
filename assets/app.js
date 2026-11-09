@@ -10,4 +10,5 @@ function renderCart(){let box=document.getElementById('cart-list');if(!box)retur
 function savePref(k,v){localStorage.setItem('familyai_'+k,v);toast('Family preference saved')}
 function voiceDemo(){toast('🎙 Listening… “Add my usual Sunday chicken basket and organic vegetables.”');setTimeout(()=>toast('AI matched: chicken + meal ingredients + organic vegetables. Review before adding.'),1000)}
 function warnSugar(){let e=document.getElementById('health-warning');if(e)e.classList.remove('hidden')}
-document.addEventListener('DOMContentLoaded',()=>{syncCount();renderCart()})
+function today(){let d=new Date(),h=d.getHours();document.querySelectorAll('[data-today]').forEach(e=>e.textContent=d.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'}).toUpperCase());document.querySelectorAll('[data-greeting]').forEach(e=>e.textContent=h<12?'Good morning':h<17?'Good afternoon':'Good evening')}
+document.addEventListener('DOMContentLoaded',()=>{syncCount();renderCart();today()})
