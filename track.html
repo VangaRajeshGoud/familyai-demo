@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Track Delivery | FamilyAI</title><link rel="stylesheet" href="assets/style.css"></head><body><div class="layout"><aside><a class="logo" href="dashboard.html"><b>F</b> Family<span>AI</span></a><a href="dashboard.html">⌂ Dashboard</a><a href="grocery.html">🛍 Groceries</a><a href="ai.html">🎙️ AI & Voice</a><a href="meals.html">🍽 Meal Planner</a><a href="health.html">❤️ Health</a><a href="family.html">☺ Family Profile</a><a href="cart.html">🛒 Basket</a><a class="active" href="order.html">📦 Order & Delivery</a></aside><main><div class="mobile-head"><a class="logo" href="dashboard.html"><b>F</b> Family<span>AI</span></a></div>
+<label id="ord-label">ORDER</label><h1 id="headline">Your order is on its way</h1><p class="muted" id="sub"></p>
+<div class="two"><div class="panel"><h2>Live delivery status</h2><ol class="timeline" id="tl"></ol></div>
+<div class="panel"><h2>Delivery promise</h2><div class="eta"><small>ARRIVING IN</small><b id="eta">—</b><div class="bar light"><i id="etabar"></i></div><small id="slot"></small></div><div id="ontime" class="ontime hidden"><b>✓ Delivered on time</b><small id="ontime-text"></small></div><div class="feature" style="margin-top:14px"><b>🛵 Delivery partner</b><p style="margin:6px 0 0">Ravi · Partner store, Nagaram · 2.1 km away</p></div><p class="muted" style="font-size:13px">Demo simulation of the delivery flow. Real tracking comes from partner stores and riders.</p></div></div>
+</main></div><div class="mobile-nav"><a href="dashboard.html">⌂</a><a href="grocery.html">🛍</a><a href="ai.html">🎙️</a><a href="cart.html">🛒</a><a href="order.html">📦</a></div><script src="assets/app.js"></script>
+<script>
+let o={id:'FA-24816',slot:'Today, 10–11 AM',total:2096,save:379};try{o=JSON.parse(localStorage.getItem('familyai_order'))||o}catch(e){}
+const r=n=>'₹'+n.toLocaleString('en-IN');
+document.getElementById('ord-label').textContent='ORDER '+o.id;document.getElementById('sub').textContent=`${r(o.total)} · saved ${r(o.save)} · delivery slot ${o.slot}`;document.getElementById('slot').textContent='Promised slot: '+o.slot;
+const STEPS=[['Order approved','You approved the Sunday basket','10:02 AM'],['Partner store confirmed','Fresh chicken cut to order; prices locked','10:04 AM'],['Packed & quality-checked','6 items · cold pack for chicken','10:19 AM'],['Out for delivery','Ravi picked up your order','10:24 AM'],['Delivered','Handed over at your door · UPI paid','10:41 AM']];
+const tl=document.getElementById('tl');tl.innerHTML=STEPS.map(([t,d,time],i)=>`<li id="s${i}"><span class="dot"></span><div><b>${t}</b><small>${d}</small></div><time>${time}</time></li>`).join('');
+const ETA=[39,37,22,17,0];let i=0;
+function step(){const li=document.getElementById('s'+i);li.classList.add('done');document.querySelectorAll('.timeline li').forEach(x=>x.classList.remove('now'));if(i<STEPS.length-1){document.getElementById('s'+(i+1)).classList.add('now')}
+document.getElementById('eta').textContent=ETA[i]?ETA[i]+' min':'Delivered';document.getElementById('etabar').style.width=Math.round((1-ETA[i]/39)*100)+'%';
+if(i===STEPS.length-1){document.getElementById('headline').textContent='Delivered on time 🎉';document.getElementById('ontime').classList.remove('hidden');document.getElementById('ontime-text').textContent='Arrived 10:41 AM, inside your 10–11 AM slot. FamilyAI will prepare next week\'s basket automatically.';toast('✓ Order delivered on time')}
+else{i++;setTimeout(step,2600)}}
+setTimeout(step,700);
+</script>
+<footer class="site-footer" aria-label="Copyright"><div>© 2026 Kridha Technologies. All rights reserved. · <a href="index.html#partner">Partner with us</a> · <a href="mailto:VangaRajesh1993@gmail.com">Contact</a></div></footer>
+</body></html>
