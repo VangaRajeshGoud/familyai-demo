@@ -16,3 +16,5 @@
 .disclaimer{font-size:13px;margin-top:36px;text-align:center}
 @media(max-width:900px){.steps,.roadmap,.about{grid-template-columns:1fr}}
 .stat small{display:block;margin-top:4px}
+
+.video-wrap{margin-top:28px}.video-wrap h2{margin-top:0}.video-wrap video{width:100%;border-radius:18px;border:1px solid #e2e8e3;background:#000;display:block}
